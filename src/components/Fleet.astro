@@ -1,0 +1,79 @@
+---
+const units = [
+  {
+    code: 'AGW-S1',
+    name: '哨兵 · 自主巡检 AMR',
+    desc: '激光雷达与视觉融合导航，全天候自主巡逻园区与厂区，异常实时上报。',
+    specs: [
+      ['巡航速度', '1.6 m/s'],
+      ['整机续航', '12 h'],
+      ['定位精度', '±2 cm'],
+      ['防护等级', 'IP54'],
+    ],
+  },
+  {
+    code: 'AGW-H1',
+    name: '园丁 · 农业作业单元',
+    desc: '果蔬识别与柔性夹爪采摘，为有机农场设计，昼夜连续作业不伤果。',
+    specs: [
+      ['采摘节拍', '4.0 s/件'],
+      ['识别准确率', '99.2%'],
+      ['有效臂展', '900 mm'],
+      ['夹持力控', '0.1–40 N'],
+    ],
+  },
+  {
+    code: 'AGW-OS',
+    name: '蜂群 · 集群调度系统',
+    desc: '多机协同调度、任务分配与数字孪生监控，一块屏幕指挥整个机群。',
+    specs: [
+      ['单集群规模', '500 台'],
+      ['调度延迟', '< 80 ms'],
+      ['部署方式', '私有化 / 云'],
+      ['开放接口', 'REST / MQTT'],
+    ],
+  },
+];
+---
+
+<section id="fleet" class="mx-auto max-w-6xl px-[var(--gutter)] py-24 md:py-32">
+  <div class="reveal">
+    <div class="sec-head">
+      <span class="idx">01</span>
+      <span class="disp text-sm text-mut">FLEET</span>
+      <span class="rule"></span>
+    </div>
+    <h2 class="sec-title">产品矩阵</h2>
+    <p class="mt-3 max-w-xl text-mut">
+      两类作业单元，一套调度大脑。硬件与系统同源设计，开箱即成集群。
+    </p>
+  </div>
+
+  <div class="mt-12 grid gap-5 md:grid-cols-3">
+    {
+      units.map((u, i) => (
+        <article
+          class="corner reveal group border border-line bg-panel p-7 transition-colors duration-300 hover:bg-panel-2"
+          style={`transition-delay: ${i * 90}ms`}
+        >
+          <div class="flex items-baseline justify-between">
+            <span class="disp text-lg text-acc">{u.code}</span>
+            <span class="tag">0{i + 1} / 03</span>
+          </div>
+          <h3 class="mt-4 text-xl font-bold">{u.name}</h3>
+          <p class="mt-3 min-h-[5.25rem] text-sm leading-7 text-mut">{u.desc}</p>
+          <dl class="mt-6 border-t border-line">
+            {u.specs.map(([k, v]) => (
+              <div class="flex items-center justify-between border-b border-line-soft py-2.5">
+                <dt class="tag">{k}</dt>
+                <dd class="font-mono text-sm text-ink group-hover:text-acc transition-colors duration-300">
+                  {v}
+                </dd>
+              </div>
+            ))}
+          </dl>
+        </article>
+      ))
+    }
+  </div>
+</section>

@@ -1,0 +1,290 @@
+@import "tailwindcss";
+
+/* ————————————————————————————————————————
+   AGW.bot 设计系统 — 工业精密 / 工程图纸
+   深石墨底 · 信号黄绿 · 等宽技术标注
+   ———————————————————————————————————————— */
+
+@font-face {
+  font-family: "Michroma";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/michroma-400.woff2") format("woff2");
+}
+@font-face {
+  font-family: "IBM Plex Mono";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/plex-mono-400.woff2") format("woff2");
+}
+@font-face {
+  font-family: "IBM Plex Mono";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("/fonts/plex-mono-500.woff2") format("woff2");
+}
+
+@theme {
+  --color-bg: #0b0d0a;
+  --color-panel: #10140e;
+  --color-panel-2: #151a12;
+  --color-line: #242b1e;
+  --color-line-soft: #1a2016;
+  --color-ink: #edf2e4;
+  --color-mut: #97a189;
+  --color-acc: #cdfb4a;
+  --color-warn: #ff6b2c;
+
+  --font-disp: "Michroma", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  --font-sans: -apple-system, "PingFang SC", "Hiragino Sans GB", "Noto Sans CJK SC", "Microsoft YaHei", "Segoe UI", sans-serif;
+}
+
+:root {
+  --gutter: clamp(1.25rem, 4vw, 3.5rem);
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+}
+
+body {
+  background: var(--color-bg);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.75;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: var(--color-acc);
+  color: var(--color-bg);
+}
+
+/* —— 工程网格底纹 —— */
+.blueprint {
+  position: relative;
+}
+.blueprint::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(var(--color-line-soft) 1px, transparent 1px),
+    linear-gradient(90deg, var(--color-line-soft) 1px, transparent 1px);
+  background-size: 56px 56px;
+  mask-image: radial-gradient(ellipse 120% 90% at 50% 0%, black 30%, transparent 78%);
+}
+
+/* —— 等宽微标注 —— */
+.tag {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-mut);
+}
+.tag--acc { color: var(--color-acc); }
+
+/* —— 展示字体 —— */
+.disp {
+  font-family: var(--font-disp);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+/* —— 分区标头：01 — FLEET / 中文大标题 —— */
+.sec-head {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  margin-bottom: 0.75rem;
+}
+.sec-head .idx {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--color-acc);
+  letter-spacing: 0.1em;
+}
+.sec-head .rule {
+  flex: 1;
+  height: 1px;
+  background: var(--color-line);
+  position: relative;
+}
+.sec-head .rule::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: -2px;
+  width: 5px;
+  height: 5px;
+  background: var(--color-acc);
+}
+.sec-title {
+  font-size: clamp(1.75rem, 4vw, 2.75rem);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  line-height: 1.25;
+}
+
+/* —— 角标括号（工程图纸边角）—— */
+.corner {
+  position: relative;
+}
+.corner::before,
+.corner::after {
+  content: "";
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  border: 1px solid var(--color-acc);
+  opacity: 0.85;
+  pointer-events: none;
+  transition: width 0.25s ease, height 0.25s ease;
+}
+.corner::before {
+  top: -1px;
+  left: -1px;
+  border-right: 0;
+  border-bottom: 0;
+}
+.corner::after {
+  bottom: -1px;
+  right: -1px;
+  border-left: 0;
+  border-top: 0;
+}
+.corner:hover::before,
+.corner:hover::after {
+  width: 26px;
+  height: 26px;
+}
+
+/* —— 危险条纹分隔 —— */
+.hazard {
+  height: 8px;
+  background: repeating-linear-gradient(
+    -45deg,
+    var(--color-acc) 0 10px,
+    transparent 10px 22px
+  );
+  opacity: 0.28;
+}
+
+/* —— 按钮 —— */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 0.85rem 1.6rem;
+  border: 1px solid var(--color-acc);
+  color: var(--color-acc);
+  position: relative;
+  transition: color 0.22s ease, background 0.22s ease;
+  white-space: nowrap;
+}
+.btn:hover {
+  background: var(--color-acc);
+  color: var(--color-bg);
+}
+.btn--solid {
+  background: var(--color-acc);
+  color: var(--color-bg);
+}
+.btn--solid:hover {
+  background: #e2ff7e;
+  border-color: #e2ff7e;
+}
+.btn .arr {
+  transition: transform 0.22s ease;
+}
+.btn:hover .arr {
+  transform: translateX(4px);
+}
+
+/* —— 滚动入场 —— */
+.reveal {
+  opacity: 0;
+  transform: translateY(26px);
+  transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.reveal.is-in {
+  opacity: 1;
+  transform: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; transition: none; }
+  html { scroll-behavior: auto; }
+}
+
+/* —— 跑马灯 —— */
+.ticker {
+  overflow: hidden;
+  border-block: 1px solid var(--color-line);
+  background: var(--color-panel);
+}
+.ticker__track {
+  display: flex;
+  width: max-content;
+  animation: ticker 42s linear infinite;
+}
+.ticker:hover .ticker__track {
+  animation-play-state: paused;
+}
+@keyframes ticker {
+  to { transform: translateX(-50%); }
+}
+
+/* —— 蓝图扫描线 —— */
+.scanline {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 120px;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    color-mix(in srgb, var(--color-acc) 14%, transparent) 55%,
+    var(--color-acc) 99%,
+    transparent
+  );
+  opacity: 0.5;
+  animation: scan 5.5s ease-in-out infinite alternate;
+  pointer-events: none;
+}
+@keyframes scan {
+  from { transform: translateY(-30px); }
+  to { transform: translateY(360px); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .scanline { animation: none; opacity: 0.2; }
+}
+
+/* —— 状态指示灯 —— */
+.dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 999px;
+  background: var(--color-acc);
+  box-shadow: 0 0 8px var(--color-acc);
+  animation: blink 2.4s ease-in-out infinite;
+}
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.35; }
+}

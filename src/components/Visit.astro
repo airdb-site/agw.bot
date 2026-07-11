@@ -1,0 +1,51 @@
+---
+const services = ['样机现场演示', '产线方案评估', '硬件参数详解', '渠道代理洽谈'];
+---
+
+<section id="visit" class="relative">
+  <div class="hazard"></div>
+  <div class="blueprint relative">
+    <div
+      class="mx-auto max-w-6xl px-[var(--gutter)] py-24 text-center md:py-36"
+    >
+      <p class="tag tag--acc reveal">05 — VISIT · 线下展厅</p>
+      <h2
+        class="reveal mx-auto mt-6 max-w-3xl text-4xl font-bold leading-snug md:text-5xl"
+        style="transition-delay: 80ms"
+      >
+        来现场，<br class="md:hidden" />看机器如何<span class="text-acc">成长</span>。
+      </h2>
+      <p
+        class="reveal mx-auto mt-6 max-w-xl text-mut"
+        style="transition-delay: 160ms"
+      >
+        参数表说明不了柔性夹爪的手感，视频也拍不出集群调度的默契。预约一次现场演示，把方案聊透。
+      </p>
+
+      <div
+        class="reveal mx-auto mt-8 flex max-w-2xl flex-wrap justify-center gap-x-8 gap-y-2"
+        style="transition-delay: 220ms"
+      >
+        {
+          services.map((s) => (
+            <span class="tag flex items-center gap-2">
+              <span class="text-acc">✓</span>
+              {s}
+            </span>
+          ))
+        }
+      </div>
+
+      <div
+        class="reveal mt-12 flex flex-wrap items-center justify-center gap-4"
+        style="transition-delay: 300ms"
+      >
+        <a href="mailto:hello@agw.bot?subject=预约线下展厅" class="btn btn--solid">
+          hello@agw.bot <span class="arr">→</span>
+        </a>
+        <span class="tag">回复通常在 1 个工作日内</span>
+      </div>
+    </div>
+  </div>
+  <div class="hazard"></div>
+</section>

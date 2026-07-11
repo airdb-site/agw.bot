@@ -1,0 +1,70 @@
+---
+const rows = [
+  {
+    no: 'A',
+    title: '园区巡检',
+    en: 'PATROL',
+    desc: '厂区、光伏电站、数据中心的全天候自主巡逻，红外测温与异常识别自动上报。',
+    metric: '夜间巡检人力 −70%',
+  },
+  {
+    no: 'B',
+    title: '农业作业',
+    en: 'HARVEST',
+    desc: '有机农场的采摘、除草与运输编队，与 .bio 生态联动，旺季弹性扩容。',
+    metric: '采摘产能 +2.3×',
+  },
+  {
+    no: 'C',
+    title: '仓储物流',
+    en: 'LOGISTICS',
+    desc: 'AGV 集群搬运与波次出库，蜂群调度按峰值自动重排任务与充电窗口。',
+    metric: '出库时效 +40%',
+  },
+  {
+    no: 'D',
+    title: '产线协同',
+    en: 'ASSEMBLY',
+    desc: '多机械臂工作站节拍对齐，视觉引导上下料，换型时间以分钟计。',
+    metric: '换型时间 −85%',
+  },
+];
+---
+
+<section id="scenarios" class="border-y border-line bg-panel/50">
+  <div class="mx-auto max-w-6xl px-[var(--gutter)] py-24 md:py-32">
+    <div class="reveal">
+      <div class="sec-head">
+        <span class="idx">02</span>
+        <span class="disp text-sm text-mut">DEPLOYMENT</span>
+        <span class="rule"></span>
+      </div>
+      <h2 class="sec-title">场景方案</h2>
+    </div>
+
+    <div class="mt-12">
+      {
+        rows.map((r) => (
+          <a
+            href="#visit"
+            class="scenario-row reveal group grid items-baseline gap-2 border-b border-line py-7 md:grid-cols-[4rem_1fr_2fr_auto] md:gap-8"
+          >
+            <span class="disp text-2xl text-line transition-colors duration-300 group-hover:text-acc">
+              {r.no}
+            </span>
+            <span class="flex items-baseline gap-3">
+              <span class="text-2xl font-bold transition-transform duration-300 group-hover:translate-x-2">
+                {r.title}
+              </span>
+              <span class="tag hidden md:inline">{r.en}</span>
+            </span>
+            <span class="text-sm leading-7 text-mut">{r.desc}</span>
+            <span class="font-mono text-sm text-acc opacity-70 transition-opacity duration-300 group-hover:opacity-100">
+              {r.metric} →
+            </span>
+          </a>
+        ))
+      }
+    </div>
+  </div>
+</section>

@@ -1,0 +1,74 @@
+---
+const steps = [
+  {
+    no: '01',
+    title: '数据回流',
+    en: 'COLLECT',
+    desc: '每次任务的感知与操作数据脱敏后回流数据中台。',
+  },
+  {
+    no: '02',
+    title: '云端训练',
+    en: 'TRAIN',
+    desc: '仿真环境重放边缘场景，模型持续再训练与评测。',
+  },
+  {
+    no: '03',
+    title: 'OTA 下发',
+    en: 'DEPLOY',
+    desc: '灰度分批推送固件与模型，失败自动回滚。',
+  },
+  {
+    no: '04',
+    title: '集群共学',
+    en: 'SYNC',
+    desc: '新能力全队同步——一台学会的，整个集群都会。',
+  },
+];
+---
+
+<section id="evolution" class="blueprint relative">
+  <div class="mx-auto max-w-6xl px-[var(--gutter)] py-24 md:py-32">
+    <div class="reveal">
+      <div class="sec-head">
+        <span class="idx">03</span>
+        <span class="disp text-sm text-mut">EVOLUTION LOOP</span>
+        <span class="rule"></span>
+      </div>
+      <h2 class="sec-title">进化闭环</h2>
+      <p class="mt-3 max-w-xl text-mut">
+        Robots evolve forever——AGW 的机器人不是交付即定型的设备，而是一支越用越强的队伍。
+      </p>
+    </div>
+
+    <div class="relative mt-14 grid gap-5 md:grid-cols-4">
+      <!-- 连接虚线（桌面端） -->
+      <div
+        class="absolute left-0 right-0 top-9 hidden border-t border-dashed border-line md:block"
+        aria-hidden="true"
+      ></div>
+
+      {
+        steps.map((s, i) => (
+          <div class="reveal relative" style={`transition-delay: ${i * 110}ms`}>
+            <div class="relative z-10 flex h-[4.5rem] items-center">
+              <span class="flex h-11 w-11 items-center justify-center border border-acc bg-bg font-mono text-sm text-acc">
+                {s.no}
+              </span>
+              <span class="ml-4 tag tag--acc">{s.en}</span>
+            </div>
+            <h3 class="text-lg font-bold">{s.title}</h3>
+            <p class="mt-2 text-sm leading-7 text-mut">{s.desc}</p>
+          </div>
+        ))
+      }
+    </div>
+
+    <div class="reveal mt-14 flex items-center gap-4">
+      <span class="hazard w-24 shrink-0"></span>
+      <p class="font-mono text-sm text-mut">
+        LOOP INTERVAL: <span class="text-acc">14 DAYS</span> · 平均每两周，整个集群迭代一次。
+      </p>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,30 @@
+---
+const items = [
+  'UNIT S1-042 ONLINE',
+  'FIRMWARE v4.2.1 DEPLOYED',
+  'HARVEST CYCLE 4.0 s',
+  'FLEET SYNC 100%',
+  'BATTERY SWAP DOCK-03 OK',
+  'MAP UPDATE PUSHED · 500 UNITS',
+  'ANOMALY REPORT: 0',
+  'NEXT OTA WINDOW 02:00 UTC',
+];
+const line = items.map((t) => `${t}`);
+---
+
+<div class="ticker" aria-hidden="true">
+  <div class="ticker__track py-2.5">
+    {
+      [0, 1].map(() => (
+        <span class="flex shrink-0 items-center">
+          {line.map((t) => (
+            <span class="tag flex items-center whitespace-nowrap px-5">
+              <span class="mr-5 text-acc">▸</span>
+              {t}
+            </span>
+          ))}
+        </span>
+      ))
+    }
+  </div>
+</div>

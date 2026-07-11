@@ -1,0 +1,59 @@
+---
+const cases = [
+  {
+    tag: 'CASE 01 · 智慧园区',
+    title: '华东某科技园区',
+    body: '12 台 AGW-S1 组成夜间巡逻编队，红外测温覆盖全部配电节点，异常平均响应时间从 40 分钟降至 90 秒。',
+    stat: '−70%',
+    statLabel: '夜间巡检人力',
+  },
+  {
+    tag: 'CASE 02 · 有机农场',
+    title: '山东有机蔬果基地',
+    body: '8 台 AGW-H1 采摘集群旺季连续作业 18 小时，配合蜂群系统动态调度充电与转运，损伤率低于人工。',
+    stat: '+2.3×',
+    statLabel: '旺季采摘产能',
+  },
+  {
+    tag: 'CASE 03 · 仓储物流',
+    title: '华南第三方物流仓',
+    body: '200 台 AGV 接入 AGW-OS，波次高峰自动重排任务队列，双十一期间零调度事故。',
+    stat: '+40%',
+    statLabel: '出库时效',
+  },
+];
+---
+
+<section id="cases" class="border-t border-line">
+  <div class="mx-auto max-w-6xl px-[var(--gutter)] py-24 md:py-32">
+    <div class="reveal">
+      <div class="sec-head">
+        <span class="idx">04</span>
+        <span class="disp text-sm text-mut">FIELD NOTES</span>
+        <span class="rule"></span>
+      </div>
+      <h2 class="sec-title">客户案例</h2>
+    </div>
+
+    <div class="mt-12 grid gap-5 lg:grid-cols-3">
+      {
+        cases.map((c, i) => (
+          <article
+            class="reveal flex flex-col justify-between border border-line bg-panel p-7"
+            style={`transition-delay: ${i * 90}ms`}
+          >
+            <div>
+              <span class="tag tag--acc">{c.tag}</span>
+              <h3 class="mt-4 text-xl font-bold">{c.title}</h3>
+              <p class="mt-3 text-sm leading-7 text-mut">{c.body}</p>
+            </div>
+            <div class="mt-8 flex items-baseline gap-3 border-t border-line pt-5">
+              <span class="font-mono text-3xl font-medium text-acc">{c.stat}</span>
+              <span class="tag">{c.statLabel}</span>
+            </div>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>
