@@ -23,6 +23,39 @@ const units = [
     ],
   },
   {
+    code: 'AGW-G1',
+    name: '先锋 · 通用人形机器人',
+    desc: '双足全尺寸人形平台，43 个全身自由度，面向工厂搬运与展厅接待的通用作业。',
+    specs: [
+      ['整机身高', '1.65 m'],
+      ['全身自由度', '43 DoF'],
+      ['行走速度', '2.0 m/s'],
+      ['单臂负载', '3 kg'],
+    ],
+  },
+  {
+    code: 'AGW-Q2',
+    name: '猎犬 · 四足机器狗',
+    desc: '全地形四足平台，楼梯、碎石与草地自如通行，可挂载云台与机械臂扩展。',
+    specs: [
+      ['最高速度', '3.5 m/s'],
+      ['额定负载', '8 kg'],
+      ['整机续航', '4 h'],
+      ['防护等级', 'IP66'],
+    ],
+  },
+  {
+    code: 'AGW-M1',
+    name: '搬运工 · 复合移动操作臂',
+    desc: 'AMR 底盘与六轴协作臂一体化设计，产线上下料与仓储拣选一机完成。',
+    specs: [
+      ['重复定位', '±0.05 mm'],
+      ['末端负载', '10 kg'],
+      ['有效臂展', '1300 mm'],
+      ['底盘负载', '300 kg'],
+    ],
+  },
+  {
     code: 'AGW-OS',
     name: '蜂群 · 集群调度系统',
     desc: '多机协同调度、任务分配与数字孪生监控，一块屏幕指挥整个机群。',
@@ -45,7 +78,7 @@ const units = [
     </div>
     <h2 class="sec-title">产品矩阵</h2>
     <p class="mt-3 max-w-xl text-mut">
-      两类作业单元，一套调度大脑。硬件与系统同源设计，开箱即成集群。
+      五类作业单元，一套调度大脑。硬件与系统同源设计，开箱即成集群。
     </p>
   </div>
 
@@ -58,7 +91,9 @@ const units = [
         >
           <div class="flex items-baseline justify-between">
             <span class="disp text-lg text-acc">{u.code}</span>
-            <span class="tag">0{i + 1} / 03</span>
+            <span class="tag">
+              {String(i + 1).padStart(2, '0')} / {String(units.length).padStart(2, '0')}
+            </span>
           </div>
           <h3 class="mt-4 text-xl font-bold">{u.name}</h3>
           <p class="mt-3 min-h-[5.25rem] text-sm leading-7 text-mut">{u.desc}</p>
