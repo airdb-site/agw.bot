@@ -1,37 +1,32 @@
-# AGW —  Agents Grow Well
-## 4. 技术方案
+# agw.bot — AGW 官网
 
-| 项 | 选型 | 理由 |
-|----|------|------|
-| 框架 | **Astro**（静态优先，Islands 按需交互） | 内容型官网首选：零 JS 起步、性能极佳、SEO 友好 |
-| 包管理 | pnpm | 已定 |
-| 构建/任务 | Makefile（`make install / run / build`） | 已定，保持现状 |
-| 样式 | Tailwind CSS + 少量自定义 CSS（动效） | 快速迭代 + 设计一致性 |
-| 内容 | Astro Content Collections（Markdown/MDX） | 时间线条目、专题文章都以内容驱动，便于持续更新 |
-| 交互点缀 | 原生 Canvas 星空 / 滚动动效（IntersectionObserver） | 不引入重型 3D 依赖，保证加载速度 |
-| 部署 | 静态托管（Cloudflare Pages / Vercel / GitHub Pages 任一） | 待定 |
+AGW（Agents Grow Well）的品牌官网（Astro 静态站点，中文）：
+面向实体机器人 / 具身智能方向的单页官网，定位是「持续进化的实体机器人集群」。
 
+品牌释义与方向探讨见 [`docs/BRAND-NOTES.md`](docs/BRAND-NOTES.md)。
 
+## 开发
 
-2. AGW = Agents Grow Well 品牌释义（完美贴合实体机器人）
-Agents：这里不只是线上数字代理，可指代实体智能机器人单元、多机协同智能体集群；
-Grow Well：机器持续迭代进化、多机器人集群协同成长、设备稳定高效运行；
-整体直译：智能机器集群，持续进化成长，精准对应多台物理机器人协同作业的项目定位。
+```bash
+make install   # pnpm install
+make run       # pnpm dev
+make build     # pnpm build，构建产物输出到 dist/
+```
 
-agw.bot 适合什么样的物理机器人计划
-1. 多机协同集群机器人项目（最契合品牌名）
-农场 / 园区巡检机器人、物流仓储多 AGV 集群；
-农业采摘、有机农场作业机器人（可联动你之前关注的 .bio 赛道）；
-工业流水线多机械臂协同工作站。
-寓意：每一台机器人智能单元（Agent）持续优化、集群共同高效运转。
-2. 具身智能自主进化机器人研发项目
-人形服务机器人、自主移动机器人（AMR），主打自我学习、持续迭代升级：
-品牌内涵呼应机器人 AI 算法 “越用越强、自主成长”，和 Grow Well 高度契合。
-3. 机器人渠道 / 代理商硬件品牌
-面向全球机器人代理商、集成商招商，寓意赋能合作渠道，旗下机器人产品生态持续壮大。
+## 技术栈
 
-实体机器人项目官网：硬件参数、样机展示、产线方案、客户案例、线下展厅预约。
+Astro 7 + Tailwind CSS 4（`@tailwindcss/vite`），零框架运行时；
+滚动动效用 IntersectionObserver，不引入 3D 依赖。
 
+## 目录结构
 
-AGW.bot — Agents Grow Well, Robots Evolve Forever
+- `src/pages/index.astro` — 唯一页面，按区块组装组件
+- `src/components/` — Hero / Fleet / Evolution / Scenarios / Cases / Ticker / Visit / Footer 各区块
+- `src/layouts/Base.astro` — 站点外壳（SEO 元信息 / 全局样式）
+- `src/styles/` — 全局样式与动效
+- `public/` — 静态资源（Astro 默认 `publicDir`）
 
+## 部署
+
+push 到 main 后由 GitHub Actions 构建并发布到 GitHub Pages（`gh-pages` 分支，
+自定义域名 `agw.bot`，见 `.github/workflows/deploy-docs.yml`）。
