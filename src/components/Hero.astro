@@ -42,7 +42,17 @@ const stats = [
     </div>
 
     <!-- 右：工程蓝图 -->
-    <div class="corner relative border border-line bg-panel/60 p-6 md:p-8">
+    <div class="corner relative overflow-hidden border border-line bg-panel/60">
+      <img
+        src="/images/agw-robot-blueprint.png"
+        alt="AGW-S1 巡检机器人与人形机器人工程蓝图"
+        class="block h-auto w-full"
+        width="512"
+        height="475"
+        loading="eager"
+        decoding="async"
+      />
+      <div class="hidden" aria-hidden="true">
       <div class="scanline"></div>
       <div class="mb-4 flex items-center justify-between">
         <span class="tag">FIG. 01 — AGW-S1 · 自主巡检单元</span>
@@ -53,7 +63,7 @@ const stats = [
         viewBox="0 0 460 380"
         class="hero-bot mx-auto w-full max-w-md"
         role="img"
-        aria-label="AGW-S1 巡检机器人工程图"
+        aria-label="AGW-S1 巡检机器人与 AGW-H1 人形机器人工程图"
         fill="none"
         stroke-linecap="round"
       >
@@ -78,10 +88,8 @@ const stats = [
         <path d="M200 48 A66 66 0 0 1 260 48" stroke="var(--color-acc)" stroke-width="1" stroke-dasharray="3 5" opacity="0.5"/>
         <!-- 机械臂 -->
         <circle cx="316" cy="228" r="7" stroke="var(--color-ink)" stroke-width="1.6"/>
-        <line x1="316" y1="228" x2="368" y2="180" stroke="var(--color-ink)" stroke-width="1.6"/>
-        <circle cx="368" cy="180" r="6" stroke="var(--color-ink)" stroke-width="1.6"/>
-        <line x1="368" y1="180" x2="404" y2="200" stroke="var(--color-ink)" stroke-width="1.6"/>
-        <path d="M404 200 l14 -8 M404 200 l12 12" stroke="var(--color-acc)" stroke-width="1.6"/>
+        <line x1="316" y1="228" x2="338" y2="207" stroke="var(--color-ink)" stroke-width="1.6"/>
+        <circle cx="338" cy="207" r="5" stroke="var(--color-ink)" stroke-width="1.6"/>
         <!-- 尺寸标注：总宽 -->
         <line x1="100" y1="356" x2="360" y2="356" stroke="var(--color-mut)" stroke-width="1" stroke-dasharray="4 4"/>
         <line x1="100" y1="350" x2="100" y2="362" stroke="var(--color-mut)" stroke-width="1"/>
@@ -95,6 +103,61 @@ const stats = [
         <!-- 标注引线：雷达 -->
         <line x1="248" y1="79" x2="330" y2="62" stroke="var(--color-mut)" stroke-width="1"/>
         <text x="336" y="65" class="dim" fill="var(--color-acc)">LIDAR 360°</text>
+
+        <!-- AGW-H1 人形机器人：参考工业人形机器人装甲结构 -->
+        <g class="humanoid" transform="translate(25 2) scale(.9)" stroke="var(--color-ink)" stroke-width="1.35">
+          <!-- 圆顶头盔与视觉面罩 -->
+          <path d="M356 70 Q357 45 379 40 Q401 44 404 68 L401 94 Q394 108 379 111 Q364 108 357 94 Z" fill="var(--color-panel)"/>
+          <path d="M361 63 Q379 54 399 64 L397 81 Q379 87 361 80 Z" fill="var(--color-bg)" stroke="var(--color-mut)"/>
+          <path d="M365 68 h22" stroke="var(--color-acc)" stroke-width="2.2"/>
+          <circle cx="399" cy="73" r="8" fill="var(--color-panel)"/>
+          <circle cx="399" cy="73" r="3" stroke="var(--color-acc)"/>
+          <path d="M370 110 v10 h18 v-10" fill="var(--color-panel)"/>
+
+          <!-- 肩部、胸甲与腰部 -->
+          <circle cx="343" cy="135" r="14" fill="var(--color-panel)"/>
+          <circle cx="343" cy="135" r="6" stroke="var(--color-acc)"/>
+          <circle cx="415" cy="135" r="14" fill="var(--color-panel)"/>
+          <circle cx="415" cy="135" r="6" stroke="var(--color-acc)"/>
+          <path d="M351 125 Q379 112 407 125 L411 164 L400 199 Q379 214 358 199 L347 164 Z" fill="var(--color-panel)"/>
+          <path d="M357 136 Q379 125 401 136 L398 174 Q379 186 360 174 Z" fill="var(--color-bg)" stroke="var(--color-mut)"/>
+          <rect x="370" y="143" width="19" height="7" rx="3.5" stroke="var(--color-acc)"/>
+          <path d="M360 190 Q379 201 398 190 L394 216 Q379 224 364 216 Z" fill="var(--color-bg)"/>
+          <circle cx="379" cy="207" r="4" stroke="var(--color-acc)"/>
+
+          <!-- 分段式机械手臂 -->
+          <path d="M331 146 Q341 140 350 147 L340 188 Q332 196 323 189 Z" fill="var(--color-panel)"/>
+          <circle cx="331" cy="196" r="9" fill="var(--color-panel)"/>
+          <circle cx="331" cy="196" r="3.5" stroke="var(--color-acc)"/>
+          <path d="M323 205 Q331 200 339 206 L337 246 Q330 254 322 247 Z" fill="var(--color-panel)"/>
+          <path d="M325 249 l-6 12 m10 -10 v13 m4 -14 l6 11" stroke-width="1.1"/>
+          <path d="M408 147 Q417 140 427 146 L435 189 Q426 196 418 188 Z" fill="var(--color-panel)"/>
+          <circle cx="427" cy="196" r="9" fill="var(--color-panel)"/>
+          <circle cx="427" cy="196" r="3.5" stroke="var(--color-acc)"/>
+          <path d="M419 206 Q427 200 435 205 L436 247 Q428 254 421 246 Z" fill="var(--color-panel)"/>
+          <path d="M433 249 l6 12 m-10 -10 v13 m-4 -14 l-6 11" stroke-width="1.1"/>
+
+          <!-- 骨盆、腿甲、膝关节与机械靴 -->
+          <path d="M360 217 Q379 228 398 217 L403 239 Q393 251 379 248 Q365 251 355 239 Z" fill="var(--color-panel)"/>
+          <circle cx="365" cy="242" r="9" fill="var(--color-panel)"/>
+          <circle cx="393" cy="242" r="9" fill="var(--color-panel)"/>
+          <path d="M355 251 Q365 245 374 252 L369 289 Q363 298 353 290 Z" fill="var(--color-panel)"/>
+          <path d="M384 252 Q393 245 403 251 L405 290 Q395 298 389 289 Z" fill="var(--color-panel)"/>
+          <circle cx="360" cy="297" r="10" fill="var(--color-panel)"/>
+          <circle cx="398" cy="297" r="10" fill="var(--color-panel)"/>
+          <circle cx="360" cy="297" r="4" stroke="var(--color-acc)"/>
+          <circle cx="398" cy="297" r="4" stroke="var(--color-acc)"/>
+          <path d="M352 307 Q360 301 368 308 L369 341 L363 351 H347 L350 332 Z" fill="var(--color-panel)"/>
+          <path d="M390 308 Q398 301 406 307 L408 332 L411 351 H395 L389 341 Z" fill="var(--color-panel)"/>
+          <path d="M347 350 q-14 3 -21 13 q18 4 43 0 l-6 -13" fill="var(--color-panel)"/>
+          <path d="M411 350 q14 3 21 13 q-18 4 -43 0 l6 -13" fill="var(--color-panel)"/>
+
+          <!-- 高度标注 -->
+          <line x1="448" y1="42" x2="448" y2="364" stroke="var(--color-mut)" stroke-width="1" stroke-dasharray="4 4"/>
+          <line x1="442" y1="42" x2="454" y2="42" stroke="var(--color-mut)"/>
+          <line x1="442" y1="364" x2="454" y2="364" stroke="var(--color-mut)"/>
+          <text x="459" y="205" text-anchor="middle" class="dim" transform="rotate(-90 459 205)" stroke="none">1750 mm</text>
+        </g>
         <!-- 十字定位标 -->
         <path d="M425 330 h14 M432 323 v14" stroke="var(--color-mut)" stroke-width="1"/>
         <path d="M30 30 h14 M37 23 v14" stroke="var(--color-mut)" stroke-width="1"/>
@@ -103,6 +166,7 @@ const stats = [
       <div class="mt-4 flex items-center justify-between border-t border-line pt-4">
         <span class="tag">DWG NO. AGW-S1-2026-04</span>
         <span class="tag">REV 4.2</span>
+      </div>
       </div>
     </div>
   </div>
