@@ -11,6 +11,8 @@ const {
   description =
     'AGW 打造自主进化的具身智能机器人集群：园区巡检、农业作业、仓储物流、产线协同。每一次任务，都让整个集群变得更强。',
 } = Astro.props;
+
+const canonical = new URL(Astro.url.pathname, Astro.site);
 ---
 
 <!doctype html>
@@ -23,6 +25,8 @@ const {
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical} />
+    <link rel="canonical" href={canonical} />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link
       rel="preload"
