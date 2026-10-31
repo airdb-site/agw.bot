@@ -4,9 +4,11 @@ import '../styles/global.css';
 interface Props {
   title?: string;
   description?: string;
+  noindex?: boolean;
 }
 
 const {
+  noindex = false,
   title = 'AGW.bot — Agents Grow Well · 持续进化的实体机器人集群',
   description =
     'AGW 打造自主进化的具身智能机器人集群：园区巡检、农业作业、仓储物流、产线协同。每一次任务，都让整个集群变得更强。',
@@ -26,7 +28,7 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
     <meta property="og:url" content={canonical} />
-    <link rel="canonical" href={canonical} />
+    {noindex ? <meta name="robots" content="noindex" /> : <link rel="canonical" href={canonical} />}
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link
       rel="preload"

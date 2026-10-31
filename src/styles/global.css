@@ -218,8 +218,8 @@ body {
 
 /* —— 滚动入场 —— */
 .reveal {
-  opacity: 0;
-  transform: translateY(26px);
+  opacity: 1;
+  transform: none;
   transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
     transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
 }
@@ -287,4 +287,13 @@ body {
 @keyframes blink {
   0%, 100% { opacity: 1; }
   50% { opacity: 0.35; }
+}
+
+a:focus-visible { outline: 2px solid var(--color-acc); outline-offset: 4px; }
+@media (max-width: 767px) {
+  html { scroll-padding-top: 8rem; }
+  #top { padding-top: 7rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ticker__track, .dot { animation: none; }
 }
